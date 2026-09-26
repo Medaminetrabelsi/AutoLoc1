@@ -1,10 +1,10 @@
-package tn.esprit.AutoLoc;
+package tn.esprit.autoloc;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AutoLocApplicationTests {
+class AutolocApplicationTests {
 
 	@Test
 	void contextLoads() {
