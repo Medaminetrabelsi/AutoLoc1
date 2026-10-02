@@ -4,7 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-
+import java.util.ArrayList;
+import java.util.List;
 @Entity
 @Table(name = "client")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
@@ -30,4 +31,7 @@ public class Client {
     private String numPermis;
 
     private LocalDate dateInscription;
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reservation> reservations = new ArrayList<>();
 }

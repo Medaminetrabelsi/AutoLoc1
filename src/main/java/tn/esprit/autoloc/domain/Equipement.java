@@ -14,4 +14,8 @@ public class Equipement {
 
     @Column(nullable = false, length = 50)
     private String libelle;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "vehicule_id")
+    private Vehicule vehicule;
 }

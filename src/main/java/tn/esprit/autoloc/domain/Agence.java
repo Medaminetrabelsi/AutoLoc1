@@ -3,6 +3,9 @@ package tn.esprit.autoloc.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "agence")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
@@ -23,4 +26,10 @@ public class Agence {
 
     @Column(length = 20)
     private String telephone;
+
+    @OneToMany(mappedBy = "agence", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Vehicule> vehicules = new ArrayList<>();
+
+    @OneToMany(mappedBy = "agence", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Employe> employes = new ArrayList<>();
 }
