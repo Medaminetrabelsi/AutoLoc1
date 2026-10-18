@@ -9,33 +9,38 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/vehicules")
+@RequestMapping("/vehicule") // Singulier comme le prof
 public class VehiculeController {
 
-    private final IVehiculeService vs;
+    IVehiculeService vehiculeService;
 
-    @GetMapping
-    public List<Vehicule> getAllVehicules() {
-        return vs.retrieveAllVehicules();
+    // http://localhost:8080/vehicule
+    @GetMapping()
+    public List<Vehicule> getVehicules() {
+        return vehiculeService.retrieveAllVehicules();
     }
 
-    @PostMapping
+    // http://localhost:8080/vehicule/8
+    @GetMapping("/{vehicule-id}")
+    public Vehicule retrieveVehicule(@PathVariable("vehicule-id") Long vehiculeId) {
+        return vehiculeService.retrieveVehicule(vehiculeId);
+    }
+
+    // http://localhost:8080/vehicule
+    @PostMapping()
     public Vehicule addVehicule(@RequestBody Vehicule v) {
-        return vs.addVehicule(v);
+        return vehiculeService.addVehicule(v);
     }
 
-    @PutMapping
+    // http://localhost:8080/vehicule?vehiculeId=1
+    @DeleteMapping
+    public void removeVehicule(@RequestParam Long vehiculeId) {
+        vehiculeService.removeVehicule(vehiculeId);
+    }
+
+    // http://localhost:8080/vehicule
+    @PutMapping("")
     public Vehicule updateVehicule(@RequestBody Vehicule v) {
-        return vs.updateVehicule(v);
-    }
-
-    @GetMapping("/{id}")
-    public Vehicule getVehicule(@PathVariable Long id) {
-        return vs.retrieveVehicule(id);
-    }
-
-    @DeleteMapping("/{id}")
-    public void removeVehicule(@PathVariable Long id) {
-        vs.removeVehicule(id);
+        return vehiculeService.updateVehicule(v);
     }
 }

@@ -1,0 +1,34 @@
+### 1. Créer un client
+POST http://localhost:8080/client
+Content-Type: application/json
+
+{
+  "nom": "Trabelsi",
+  "prenom": "Mohamed Amine",
+  "email": "amine@example.com",
+  "telephone": "12345678",
+  "numPermis": "P123456",
+  "dateInscription": "2026-01-15"
+}
+
+### 2. Lister tous les clients
+GET http://localhost:8080/client
+
+### 3. Récupérer le client par ID
+GET http://localhost:8080/client/1
+
+### 4. Créer un véhicule
+POST http://localhost:8080/vehicule
+Content-Type: application/json
+
+{
+  "immatriculation": "AB-123-CD",
+  "marque": "Renault",
+  "modele": "Clio",
+  "categorie": "CITADINE",
+  "tarifJournalier": 45.50,
+  "statut": "DISPONIBLE"
+}
+
+### 5. Lister tous les véhicules
+GET http://localhost:8080/vehicule
